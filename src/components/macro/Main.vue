@@ -1,17 +1,17 @@
 <template>
   <main>
-    <listSong/>
+    <Songlist/>
   </main>
 </template>
 
 
 <script>
-import listSong from '../sections/listSong.vue'
+import Songlist from '../sections/Songlist.vue'
 
 export default {
   name:"Main",
   components: {
-    listSong
+    Songlist
   }
 }
 </script>
