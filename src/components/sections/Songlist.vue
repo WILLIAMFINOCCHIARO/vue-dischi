@@ -1,5 +1,10 @@
 <template>
   <div class="container">
+    <div class="row text-center">
+      <div class="col-12">
+        <SearchBar />
+      </div>
+    </div>
     <div class="row mt-5 ">
       <div class="col-12 col-sm-6 col-lg-3 " v-for="(card, index) in cards" :key="index">
         <Cardlist :info="card" /> 
@@ -11,12 +16,14 @@
 <script>
 import axios from'axios';
 import Cardlist from '../commons/Cardlist.vue';
+import SearchBar from '../commons/SearchBar.vue';
 
 export default {
   name:"Songlist",
 
   components: {
-    Cardlist
+    Cardlist,
+    SearchBar
   },
 
   data() {
