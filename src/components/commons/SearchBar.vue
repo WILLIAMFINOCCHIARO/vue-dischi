@@ -1,20 +1,25 @@
 <template>
   <div class="search-bar">
     <form action="">
-      <input type="text" id="" placeholder="Search song">
+      <input type="text" class="mt-3 form-control" placeholder="Search song" v-model="searchText" >
+      <button class="text-danger fs-4 fw-bold my-2" @click.prevent ="$emit('search',searchText)">Search</button>
+      <button class="text-danger fs-4 fw-bold" @click.prevent="$emit('search','')">Reset</button>
     </form>
-    <button>Search</button>
-    <button>Reset</button>
   </div>
 </template>
 
 <script>
 export default {
   name:"SearchBar",
+  data() {
+    return {
+      searchText:''
+    }
+  }
 
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

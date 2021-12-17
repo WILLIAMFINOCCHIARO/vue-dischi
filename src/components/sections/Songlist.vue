@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row text-center">
       <div class="col-12">
-        <SearchBar />
+        <SearchBar @search="searchCard"/>
       </div>
     </div>
     <div class="row mt-5 ">
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       cards: null,
+      searchText: ""
     };
   },
 
@@ -38,14 +39,33 @@ export default {
       .then((response) => {
         // handle success
         this.cards = response.data.response;
+        this.cardsFiltered = response.data.response;
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
   },
+  methods:{
+    searchCard(payload){
+      this.searchText = payload;
+    }
+
+  },
+
+  computed: {
+        charactersFiltered() {
+            const arrayFiltered = this.cards.filter( (elm) => {
+                return elm.name.toLowerCase().includes(this.searchText.toLowerCase()); // true o false
+            } );  // se è true mantengo il personaggio altrimenti lo scarto
+            return arrayFiltered;
+        }
+    }
+
+  
   
 }
+
 </script>
 
 <style lang="scss" scoped>
